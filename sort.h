@@ -18,6 +18,46 @@ void print(T a[], int start, int stop) {
 }
 
 template <class T>
+void merge(T a[], int start, int middle, int stop) {
+    
+    int i1 = start;
+    int i2 = middle;
+    
+    T * result = new T[stop - start];
+    
+    int j = 0;
+    
+    while (i1 < middle && i2 < stop) {
+        if (a[i1] < a[i2]) {
+            result[j] = a[i1];
+            ++i1;
+        } else {
+            result[j] = a[i2];
+            ++i2;
+        }
+        ++j;
+    }
+    
+    std::copy(a+i1, a+middle, result+j);
+    std::copy(a+i2, a+stop, result+j);
+    std::copy(result, result+(stop-start), (a+start));
+    
+    delete [] result;
+}
+
+
+template <class T>
+void mergesort(T a[], int start, int stop) {
+    if (stop - start > 1) {
+        int middle = (start + stop)/2;
+        mergesort(a, start, middle);
+        mergesort(a, middle, stop);
+        
+        merge(a, start, middle, stop);
+    }
+}
+
+template <class T>
 void insertion_sort(T a[],  int start, int stop) {
     for (int i = start+1; i < stop; ++i) {
         T x = a[i];
