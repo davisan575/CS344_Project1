@@ -110,7 +110,7 @@ void partition_inPlace(T a[], int start, int stop, int & pivot) {
     std::swap(a[r], a[pivot]);
     T pivot_value = a[r];
     while (q != r) {
-        if (a[q] <= pivot_value) {
+        if (a[q] < pivot_value) {
             std::swap(a[q], a[p]);
             ++p;
         }
@@ -135,8 +135,8 @@ void quicksort_random(T a[], int start, int stop) {
     if (stop - start > 1) {
         int pivot = start + rand() % (stop-start);
         partition(a, start, stop, pivot);
-        quicksort_first(a, start, pivot);
-        quicksort_first(a, pivot+1, stop);
+        quicksort_random(a, start, pivot);
+        quicksort_random(a, pivot+1, stop);
     }
 }
 

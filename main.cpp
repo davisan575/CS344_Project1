@@ -7,7 +7,7 @@ int Integer_count;
 
 int main(int argc, const char * argv[]) {
     
-    int n = 10000;
+    const int n = 10000;
     
     Integer array1[n]; // In order
     Integer array2[n]; // Reverse order
@@ -424,19 +424,19 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     */
     Integer_count = 0;
-    quicksort_random(array1, 0, n);
+    quicksort_inPlace(array1, 0, n);
     RQSIPcount[0] = Integer_count;
     Integer_count = 0;
-    quicksort_random(array2, 0, n);
+    quicksort_inPlace(array2, 0, n);
     RQSIPcount[1] = Integer_count;
     Integer_count = 0;
-    quicksort_random(array3, 0, n);
+    quicksort_inPlace(array3, 0, n);
     RQSIPcount[2] = Integer_count;
     Integer_count = 0;
-    quicksort_random(array4, 0, n);
+    quicksort_inPlace(array4, 0, n);
     RQSIPcount[3] = Integer_count;
     Integer_count = 0;
-    quicksort_random(array5, 0, n);
+    quicksort_inPlace(array5, 0, n);
     RQSIPcount[4] = Integer_count;
     
     print(RQSIPcount, 0, 5);
